@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Lagos Path Finder</title>
+    
+{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Lagos Path Finder</h1>
+    </header>
+    <div class="container">
+        <form method="POST" action="/">
+            <label for="location">Start Location:</label>
+            <input type="text" id="location" name="location" list="locations" required>
+            <datalist id="locations">
+                {% for location in locations %}
+                <option value="{{ location }}">
+                {% endfor %}
+            </datalist>
+            <br>
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" list="destinations" required>
+            <datalist id="destinations">
+                {% for destination in locations %}  <!-- Assuming destinations same as locations -->
+                <option value="{{ destination }}">
+                {% endfor %}
+            </datalist>
+            <br>
+            <button type="submit">Find Path</button>
+        </form>
+        {% if error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Lagos Path Finder</p>
+    </footer>
+{% endblock %}

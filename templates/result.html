@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>SHORTEST PATH FINDER</title>
+{% endblock %}
+    
+
+{% block body %}
+<header>
+    <h1>Lagos Path Finder</h1>
+</header>
+<div class="container">
+    <div class="result">
+        <h2>Shortest Path</h2>
+        <p>The shortest path is: {{ arr }}</p>
+
+        <div class="node-container">
+            {% for node in arr %}
+                <div class="node">{{ node }}</div>
+                {% if not loop.last %}
+                    <span class="arrow"></span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    
+        <a href="/">Go Back</a>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Lagos Path Finder</p>
+</footer>
+{% endblock %}
